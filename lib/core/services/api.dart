@@ -20,7 +20,7 @@ class Api {
     // if data is ok convert and return
     if (response.statusCode == 200) {
       dynamic data = jsonDecode(response.body);
-      print('http.response => $data');
+      // print('http.response => $data');
       return User.fromJson(data);
     } else {
       print('Request failed with status: ${response.statusCode}.');
@@ -39,7 +39,7 @@ class Api {
 
     // if data is ok convert and return
     if (response.statusCode == 200) {
-      print('http.response => ${response.body}');
+      // print('http.response => ${response.body}');
       // parse into List
       List<dynamic> parsed = json.decode(response.body) as List<dynamic>;
 
@@ -50,6 +50,7 @@ class Api {
 
       return posts;
     } else {
+      print('Request failed with status: ${response.statusCode}.');
       return null;
     }
   }
@@ -73,6 +74,7 @@ class Api {
 
       return comments;
     } else {
+      print('Request failed with status: ${response.statusCode}.');
       return null;
     }
   }
