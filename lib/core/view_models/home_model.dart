@@ -1,17 +1,17 @@
 import '../../get_it.dart';
 import '../enums/view_state.dart';
 import '../models/post.dart';
-import '../services/api.dart';
+import '../services/posts_service.dart';
 import 'base_model.dart';
 
 class HomeModel extends BaseModel {
-  Api _api = getIt<Api>();
+  PostsService _postsService = getIt<PostsService>();
 
-  List<Post> posts;
+  List<Post> get posts => _postsService.posts;
 
   Future getPosts(int userId) async {
     setState(ViewState.Busy);
-    posts = await _api.getPostsForUser(userId);
+    await _postsService.getPostsForUser(userId);
     setState(ViewState.Idle);
   }
 }

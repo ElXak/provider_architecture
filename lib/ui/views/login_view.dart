@@ -33,9 +33,7 @@ class _LoginViewState extends State<LoginView> {
                         OutlinedButton.styleFrom(backgroundColor: Colors.white),
                     onPressed: () async {
                       bool loginSuccess = await model.login(_controller.text);
-                      if (loginSuccess) {
-                        Navigator.pushNamed(context, '/');
-                      }
+                      if (loginSuccess) Navigator.pushNamed(context, '/');
                     },
                     child: Text(
                       'Login',
