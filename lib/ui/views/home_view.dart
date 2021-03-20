@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +13,12 @@ import '../shared/ui_helpers.dart';
 import '../views/base_view.dart';
 import '../widgets/postlist_item.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return BaseView<HomeModel>(
@@ -51,7 +58,12 @@ class HomeView extends StatelessWidget {
         itemBuilder: (context, index) => PostListItem(
           post: posts[index],
           onTap: () =>
-              Navigator.pushNamed(context, '/post', arguments: posts[index]),
+              Navigator.pushNamed(context, '/post', arguments: posts[index])
+                  .then(onGoBack),
         ),
       );
+
+  FutureOr onGoBack(dynamic value) {
+    setState(() {});
+  }
 }
