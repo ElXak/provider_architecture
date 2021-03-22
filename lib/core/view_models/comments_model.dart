@@ -1,11 +1,12 @@
 import '../../get_it.dart';
 import '../enums/view_state.dart';
 import '../models/comment.dart';
-import '../services/api.dart';
+import '../services/fake_api.dart';
+import '../services/http_api.dart';
 import 'base_model.dart';
 
 class CommentsModel extends BaseModel {
-  Api _api = getIt<Api>();
+  var _api = USE_FAKE_IMPLEMENTATION ? getIt<FakeApi>() : getIt<HttpApi>();
 
   List<Comment> comments;
 

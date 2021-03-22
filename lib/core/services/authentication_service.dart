@@ -2,10 +2,11 @@ import 'dart:async';
 
 import '../../get_it.dart';
 import '../models/user.dart';
-import 'api.dart';
+import 'fake_api.dart';
+import 'http_api.dart';
 
 class AuthenticationService {
-  Api _api = getIt<Api>();
+  var _api = USE_FAKE_IMPLEMENTATION ? getIt<FakeApi>() : getIt<HttpApi>();
 
   StreamController<User> userController = StreamController<User>();
 
