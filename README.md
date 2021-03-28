@@ -1,6 +1,6 @@
 # provider_architecture
 
-Provider architecture
+Simple provider architecture. StreamProvider with get_it.
 
 ## Getting Started
 
